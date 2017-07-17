@@ -341,15 +341,14 @@
 
       
         
-          
-            <h3 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h3><p>就我们所知，I/O主要分为，异步I/O和同步I/O,阻塞I/O和非阻塞I/O。其实，准确的说，只有阻塞I/O和非阻塞I/O,异步I/O一般都是通过线程池的方式来模拟这个效果的。那么，阻塞I/O和非阻塞I/O是什么呢？</p>
-<h4 id="阻塞I-O"><a href="#阻塞I-O" class="headerlink" title="阻塞I/O"></a>阻塞I/O</h4><p>阻塞I/O其实就是，当你发起了I/O操作后，你必须要等到I/O操作完成，结果返回之后，你才可以继续执行，这也说明了，在发起I/O请求再到I/O结果返回的这一段CPU时间就浪费了，那么有没有办法可以使用这一段CPU时间呢？答案就是使用非阻塞I/O。具体的可以看下图.<img src="C:\Users\chenjg\Desktop\1500310609(1" alt="1500310609(1)">.jpg)</p>
-<h4 id="非阻塞I-O"><a href="#非阻塞I-O" class="headerlink" title="非阻塞I/O"></a>非阻塞I/O</h4><p>前面我们说过，当发出I/O请求后，我们就必须一直等待I/O结果返回，那么，我们可以发出I/O请求后，就去做其他事情，等过会儿再来看一下吗？答案是可以的。非阻塞I/O就是这样做的，当发出I/O请求后，内核立马返回一个文件描述符，我们可以通过文件描述符在之后去对读取文件的数据以及操作文件。</p>
-<h5 id="非阻塞I-O实现方式"><a href="#非阻塞I-O实现方式" class="headerlink" title="非阻塞I/O实现方式"></a>非阻塞I/O实现方式</h5><p>​    其实基本上所有非阻塞I/O的实现方式都是基于轮询的。轮询是意思是说，我发出请求后，我就先利用CPU去做其他的事情，不过每隔一段时间我就来问你，我的请求是否已经完成了。这样一来的话，确实我们就可以合理的利用这一段限制的CPU时间了。但是，其实对于应用程序来说，这也算是一种同步，因为应用程序需要等待I/O结果完全返回之后，才能做其他事情。依旧花了很多时间在等待，在等待期间内，CPU要么用于遍历文件描述符的状态，要么用于休眠等待事件。</p>
-<p>那么，有没有一种方法，可以真正实现我们所想要的效果呢？也就是发出I/O请求后，可以立刻执行下面的语句，等到I/O操作完成后，在执行相应的回调函数呢？单线程来说的话，可能就很难。不过对于多线程来说就比较简单了。我们可以让一些线程专门用于I/O操作，这里的I/O操作可以是阻塞的，也可以是非阻塞的。而有一个主线程专门来执行语句。也就是说，主线程来执行语句，当遇到I/O操作后，则将I/O操作分配给专门负责I/O操作的线程，然后自己继续执行下面的语句，当I/O操作完成后，则操作线程通过线程间的通信通知主线程，并将结果返回给主线程，主线程在将结果和回调函数混合起来执行。这样，就可以达到我们想要的效果了。</p>
-<p>其实，nodejs的非阻塞I/O就是这么实现的。它有四个基本元素：请求对象，I/O线程池，观察者，事件循环。当你发出一个I/O请求的时候，则会将你的请求的参数、回调函数等，封装在一个请求对象上，然后将其放到I/O线程池中等待执行。当I/O线程池中有线程可用的时候，则将线程分配给请求对象，执行相应的I/O操作，当I/O操作完成后，则将I/O操作的结果放到请求对象中，并通知I/O观察者I/O操作已完成，请求对象会被加入到I/O观察者的请求对象队列中，在每一个事件循环开始，主线程都会观察I/O观察者的队列是否为空，若不为空，则取队首的请求对象，取出请求对象的回调函数和结果，并执行回调函数。</p>
-
-          
+          <h3 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h3><p>就我们所知，I/O主要分为，异步I/O和同步I/O,阻塞I/O和非阻塞I/O。其实，准确的说，只有阻塞I/O和非阻塞I/O,异步I/O一般都是通过线程池的方式来模拟这个效果的。那么，阻塞I/O和非阻塞I/O是什么呢？<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/18/nodejs异步I-O/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -478,35 +477,14 @@
 
       
         
-          
-            <p>​let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。</p>
-<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>​let它的出现，我认为主要是解决了块级作用域的需求。因为js以前本身是没有什么块级作用域的概念的(顶多就算上一个函数作用域),因此这也导致了很多变量污染的问题，很多时候由于你没有处理好作用域的影响，导致了奇怪的问题。因此我们一般都采取函数作用域的方式来防止变量的污染。不过既然有了let的出现，我们就可以很方便的解决这个问题.</p>
-<ol>
-<li>块级作用域</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">	<span class="built_in">console</span>.log(i)</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(i) <span class="comment">// 5</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++) &#123;</div><div class="line">	<span class="built_in">console</span>.log(j)</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(j) <span class="comment">// error: j is not defined</span></div></pre></td></tr></table></figure>
-<p>如上所示，如果我们在循环内部使用var声明一个变量的话，当循环结束后，该变量并没有被回收，而当我们使用let的时候，当离开这个块的时候，该变量就会回收。</p>
-<ol>
-<li>暂时性死区</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">5</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// undefined</span></div><div class="line">  <span class="keyword">var</span> i = <span class="number">10</span></div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="keyword">let</span> j = <span class="number">55</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hhh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(j) <span class="comment">// ReferenceError: j is not defined</span></div><div class="line">  <span class="keyword">let</span> j = <span class="number">77</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<p>看以上代码，由于var它具有变量提升的功能，所以该声明语句会移到最上面执行，也就是等价于以下代码:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">5</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> i</div><div class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// undefined</span></div><div class="line">  i = <span class="number">10</span></div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="keyword">let</span> j = <span class="number">55</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hhh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(j) <span class="comment">// ReferenceError: j is not defined</span></div><div class="line">  <span class="keyword">let</span> j = <span class="number">77</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<p>但是，如果将var换成let的话却会报错，如果说，let是没有变量提升的话，那么应该是直接输出55，而不应该报错啊。</p>
-<p>其实，这个特性叫做临时性死区，也可以把它当成变量提升的一种特殊情况.也就是说，当你在一个块里面，利用let声明一个变量的时候，在块的开始部分到该变量的声明语句之间，我们称之为临时性死区，你不可以在这个区域内使用该变量，直到遇到其let语句为止。比如:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">5</span>;   <span class="comment">// j的临时性死区</span></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hh</span>(<span class="params"></span>) </span>&#123; </div><div class="line">  <span class="keyword">var</span> i</div><div class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// undefined</span></div><div class="line">  i = <span class="number">10</span></div><div class="line">&#125;)() <span class="comment">// j的临时性死区</span></div><div class="line"><span class="comment">// j的临时性死区</span></div><div class="line"><span class="keyword">let</span> j = <span class="number">55</span>; <span class="comment">// 接下来可以愉快的使用let了</span></div><div class="line"><span class="built_in">console</span>.log(j)</div><div class="line"><span class="built_in">console</span>.log(j+<span class="number">10</span>)</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hhh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(j) <span class="comment">// 新的j的临时性死区</span></div><div class="line">  <span class="keyword">let</span> j = <span class="number">77</span> <span class="comment">//又有一个声明语句，从这个函数的开始部分到这里，都是新的j的临时性死区</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<p>之所以说它是变量提升的一种特殊情况，是因为无论你在块的哪一个地方利用let声明了一个变量，都会产生一个从块的开始部分到该变量声明语句的临时性死区.</p>
-<ol>
-<li>比较安全可靠:对var或者是直接声明全局变量来说，变量都可以未声明或者在声明语句之前就使用，而使用了let之后，该变量必须在其声明语句后，才能使用，否则就会报错。这就在一定程度上避免了变量滥用的情况。</li>
-</ol>
-<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>const，顾名思义，就是声明一个常量，但是，真的是这样吗？</p>
-<h4 id="对基本类型而言"><a href="#对基本类型而言" class="headerlink" title="对基本类型而言"></a>对基本类型而言</h4><p>对于基本的类型而言的话，比如number,string,boolean等来说，确实它就是声明一个不会变的常量，只要你修改了它，就会报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const a = 1</div><div class="line">a = 2 // Uncaught TypeError: Assignment to constant variable.</div><div class="line">const b = &apos;1231&apos;</div><div class="line">b = &apos;xcv&apos; // Uncaught TypeError: Assignment to constant variable.</div><div class="line">const c = true</div><div class="line">c = false // Uncaught TypeError: Assignment to constant variable.</div></pre></td></tr></table></figure>
-<h4 id="对引用类型而言"><a href="#对引用类型而言" class="headerlink" title="对引用类型而言"></a>对引用类型而言</h4><p>不过，对于引用类型而言的话，它指的并不会对象的内容不变，而是对象的地址不变。也就是说，你可以修改对象的内部成员，但是你不可以修改该变量的地址。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'cjg'</span></div><div class="line">&#125;</div><div class="line">obj.school = <span class="string">'sysu'</span></div><div class="line"><span class="built_in">console</span>.log(obj) <span class="comment">// Object &#123;name: "cjg", school: "sysu"&#125;</span></div><div class="line">obj = &#123;&#125; <span class="comment">// VM183:6 Uncaught TypeError: Assignment to constant variabl</span></div></pre></td></tr></table></figure>
-<p>其实，就我个人理解，const无论是作用于基本类型还是引用类型，它都是为了保证变量的地址不发生改变(因为你对基本类型而言，你给它赋一个新值,其实也就意味着修改了该变量的地址)</p>
-
-          
+          <p>​let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/12/let和const详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
