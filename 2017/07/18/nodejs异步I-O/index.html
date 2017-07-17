@@ -45,7 +45,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="心得,前端," />
+  <meta name="keywords" content="nodejs,异步I/O," />
 
 
 
@@ -61,20 +61,19 @@
 
 
 
-<meta name="description" content="实现前后端分离的心得对目前的web来说，前后端分离已经变得越来越流行了，越来越多的企业/网站都开始往这个方向靠拢。那么，为什么要选择前后端分离呢？前后端分离对实际开发有什么好处呢?">
-<meta name="keywords" content="心得,前端">
+<meta name="description" content="I/O就我们所知，I/O主要分为，异步I/O和同步I/O,阻塞I/O和非阻塞I/O。其实，准确的说，只有阻塞I/O和非阻塞I/O,异步I/O一般都是通过线程池的方式来模拟这个效果的。那么，阻塞I/O和非阻塞I/O是什么呢？ 阻塞I/O阻塞I/O其实就是，当你发起了I/O操作后，你必须要等到I/O操作完成，结果返回之后，你才可以继续执行，这也说明了，在发起I/O请求再到I/O结果返回的这一段CPU时">
+<meta name="keywords" content="nodejs,异步I&#x2F;O">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实现心得">
-<meta property="og:url" content="http://yoursite.com/2017/06/28/实现心得/index.html">
+<meta property="og:title" content="nodejs异步I&#x2F;O">
+<meta property="og:url" content="http://yoursite.com/2017/07/18/nodejs异步I-O/index.html">
 <meta property="og:site_name" content="Chenjg&#39;s blog">
-<meta property="og:description" content="实现前后端分离的心得对目前的web来说，前后端分离已经变得越来越流行了，越来越多的企业/网站都开始往这个方向靠拢。那么，为什么要选择前后端分离呢？前后端分离对实际开发有什么好处呢?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170612002113179?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2l0aHViXzM5MTMzMTky/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/993343/201706/993343-20170612113502759-1966770141.png">
-<meta property="og:updated_time" content="2017-06-29T07:58:34.537Z">
+<meta property="og:description" content="I/O就我们所知，I/O主要分为，异步I/O和同步I/O,阻塞I/O和非阻塞I/O。其实，准确的说，只有阻塞I/O和非阻塞I/O,异步I/O一般都是通过线程池的方式来模拟这个效果的。那么，阻塞I/O和非阻塞I/O是什么呢？ 阻塞I/O阻塞I/O其实就是，当你发起了I/O操作后，你必须要等到I/O操作完成，结果返回之后，你才可以继续执行，这也说明了，在发起I/O请求再到I/O结果返回的这一段CPU时">
+<meta property="og:image" content="c:/Users/chenjg/Desktop/1500310609(1">
+<meta property="og:updated_time" content="2017-07-17T17:25:45.770Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="实现心得">
-<meta name="twitter:description" content="实现前后端分离的心得对目前的web来说，前后端分离已经变得越来越流行了，越来越多的企业/网站都开始往这个方向靠拢。那么，为什么要选择前后端分离呢？前后端分离对实际开发有什么好处呢?">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170612002113179?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2l0aHViXzM5MTMzMTky/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta name="twitter:title" content="nodejs异步I&#x2F;O">
+<meta name="twitter:description" content="I/O就我们所知，I/O主要分为，异步I/O和同步I/O,阻塞I/O和非阻塞I/O。其实，准确的说，只有阻塞I/O和非阻塞I/O,异步I/O一般都是通过线程池的方式来模拟这个效果的。那么，阻塞I/O和非阻塞I/O是什么呢？ 阻塞I/O阻塞I/O其实就是，当你发起了I/O操作后，你必须要等到I/O操作完成，结果返回之后，你才可以继续执行，这也说明了，在发起I/O请求再到I/O结果返回的这一段CPU时">
+<meta name="twitter:image" content="c:/Users/chenjg/Desktop/1500310609(1">
 
 
 
@@ -102,13 +101,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/28/实现心得/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/18/nodejs异步I-O/"/>
 
 
 
 
 
-  <title> 实现心得 | Chenjg's blog </title>
+  <title> nodejs异步I/O | Chenjg's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/实现心得/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/18/nodejs异步I-O/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chenjg">
@@ -278,7 +277,7 @@
             
             
               
-                实现心得
+                nodejs异步I/O
               
             
           </h1>
@@ -293,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T23:26:26+08:00">
-                2017-06-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T00:51:07+08:00">
+                2017-07-18
               </time>
             
 
@@ -311,7 +310,7 @@
 
           
           
-             <span id="/2017/06/28/实现心得/" class="leancloud_visitors" data-flag-title="实现心得">
+             <span id="/2017/07/18/nodejs异步I-O/" class="leancloud_visitors" data-flag-title="nodejs异步I/O">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -340,43 +339,12 @@
       
 
       
-        <h1 id="实现前后端分离的心得"><a href="#实现前后端分离的心得" class="headerlink" title="实现前后端分离的心得"></a>实现前后端分离的心得</h1><p>对目前的web来说，前后端分离已经变得越来越流行了，越来越多的企业/网站都开始往这个方向靠拢。那么，为什么要选择前后端分离呢？前后端分离对实际开发有什么好处呢?</p>
-<a id="more"></a>
-<h2 id="为什么选择前后端分离"><a href="#为什么选择前后端分离" class="headerlink" title="为什么选择前后端分离"></a><strong>为什么选择前后端分离</strong></h2><ul>
-<li><strong>在以前传统的网站开发中，前端一般扮演的只是切图的工作，只是简单地将UI设计师提供的原型图实现成静态的HTML页面，而具体的页面交互逻辑，比如与后台的数据交互工作等，可能都是由后台的开发人员来实现的，或者是前端是紧紧的耦合后台。比如，以前淘宝的Web基本上都是基于MVC框架webx，架构决定了前端只能依赖后端。所以他们的开发模式依然是，前端写好静态demo，后端翻译成VM模版，这种模式的问题就不说了，被吐槽了很久。</strong></li>
-<li><strong>而且更有可能后台人员直接兼顾前端的工作，一边实现API接口，一边开发页面，两者互相切换着做，而且根据不同的url动态拼接页面，这也导致后台的开发压力大大增加。前后端工作分配不均。不仅仅开发效率慢，而且代码难以维护。而前后端分离的话，则可以很好的解决前后端分工不均的问题，将更多的交互逻辑分配给前端来处理，而后端则可以专注于其本职工作，比如提供API接口，进行权限控制以及进行运算工作。而前端开发人员则可以利用nodejs来搭建自己的本地服务器，直接在本地开发，然后通过一些插件来将api请求转发到后台，这样就可以完全模拟线上的场景，并且与后台解耦。前端可以独立完成与用户交互的整一个过程，两者都可以同时开工，不互相依赖，开发效率更快，而且分工比较均衡。</strong></li>
-</ul>
-<h2 id="如何做到前后端分离"><a href="#如何做到前后端分离" class="headerlink" title="如何做到前后端分离"></a><strong>如何做到前后端分离</strong></h2><p>(以下的内容都是基于我们的电影购票网站来讨论的)<br>前端的技术框架是: vue全家桶+nodejs+express(实现的是单页面(SPA)应用)<br>首先，先分清楚前后端的工作</p>
-<ul>
-<li>前端的工作：实现整一个前端页面以及交互逻辑，以及利用ajax与nodejs服务器（中间层)交互</li>
-<li>后端的工作：提供API接口，利用redis来管理session,与数据库交互</li>
-</ul>
-<p>我们项目的整一个架构如下:</p>
-<p><img src="http://img.blog.csdn.net/20170612002113179?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2l0aHViXzM5MTMzMTky/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p><strong>接下来进入正题，如何实现前后端分离</strong></p>
-<ol>
-<li><p>一般来说，要实现前后端分离，前端就需要开启一个本地的服务器来运行自己的前端代码，以此来模拟真实的线上环境，并且，也是为了更好的开发。因为你在实际开发中，你不可能要求每一个前端都去搭建一个java(php)环境，并且在java环境下开发，这对于前端来说，学习成本太高了。但如果本地没有开启服务器的话，不仅无法模拟线上的环境，而且还面临到了跨域的问题，因为你如果写静态的html页面，直接在文件目录下打开的话，你是无法发出ajax请求的(浏览器跨域的限制),因此，你需要在本地运行一个服务器，可是又不想搭建陌生而庞大的java环境，怎么办法呢？nodejs正好解决了这个问题。在我们项目中，我们利用nodejs的express框架来开启一个本地的服务器，然后利用nodejs的一个http-proxy-middleware插件将客户端发往nodejs的请求转发给真正的服务器，让nodejs作为一个中间层。这样，前端就可以无忧无虑的开发了</p>
-</li>
-<li><p>由于前后端分离后，前端和后台同时开发时，就可能遇到前端已经开发好一个页面了，可是却等待后台API接口的情况。比如说A是负责前端，B是负责后台，A可能用了一周做好了基本的结构，并且需要API接口联调后，才能继续开发，而此时B却还没有实现好所需要的接口，这种情况，怎么办呢？在我们这个项目里，我们是通过了mock来提供一些假数据，我们先规定好了API接口，设计出了一套API文档，然后我们就可以通过API文档，利用mock(<a href="http://mockjs.com)来返回一些假数据，这样就可以模拟发送API到接受响应的整一个过程，因此前端也不需要依赖于后端开发了，可以独立开发，等到后台的API全部设计完之后，就可以比较快速的联调。" target="_blank" rel="external">http://mockjs.com)来返回一些假数据，这样就可以模拟发送API到接受响应的整一个过程，因此前端也不需要依赖于后端开发了，可以独立开发，等到后台的API全部设计完之后，就可以比较快速的联调。</a></p>
-</li>
-</ol>
-<h2 id="为什么要引入nodejs作为中间层"><a href="#为什么要引入nodejs作为中间层" class="headerlink" title="为什么要引入nodejs作为中间层"></a><strong>为什么要引入nodejs作为中间层</strong></h2><p>前面的我发的项目结构图中，已经表明，在这个项目里，我们将nodejs作为中间层，那么，为什么我们要特地引入nodejs呢？直接用java做不就行了吗？</p>
-<ul>
-<li>我觉得引入nodejs主要是为了分层开发，职责划分，nodejs作为前端服务器，由前端开发人员负责，前端开发人员不需要知道java后台是如何实现的，也不需要知道API接口是如何实现的，我们只需要关心我们前端的开发工作，并且管理好nodejs前端服务器，而后台开发人员也不需要考虑如何前端是如何部署的，他只需要做好自己擅长的部分，提供好API接口就可以； </li>
-<li>nodejs本身有着独特的异步、非阻塞I/O的特点，这也就意味着他特别适合I/O密集型操作，在处理并发量比较大的请求上能力比较强，因此，利用它来充当前端服务器，向客户端提供静态文件以及响应客户端的请求，我觉得这是一个很不错的选择。</li>
-</ul>
-<h2 id="前端服务器如何部署"><a href="#前端服务器如何部署" class="headerlink" title="前端服务器如何部署"></a><strong>前端服务器如何部署</strong></h2><p><strong>nodejs前端服务器的职责</strong></p>
-<ol>
-<li>作为静态文件服务器，当用户访问网站的时候，将index.html以及其引入的js、css、fonts以及图片返回给用户</li>
-<li>负责将客户端发来的ajax请求转发给后台服务器</li>
-</ol>
-<p><strong>其实前端服务器的部署工作是算比较简单的，具体有以下两个点:</strong></p>
-<ol>
-<li>将开发完的前端代码，利用webpack打包成静态压缩文件</li>
-<li>在服务器上，利用pm2负载均衡器来执行以下的代码来开启服务器:</li>
-</ol>
-<p><img src="http://images2015.cnblogs.com/blog/993343/201706/993343-20170612113502759-1966770141.png" alt=""></p>
-<p>评论区有人提到有一个不错的文章，我看了下觉得写得确实很详细，大家也可能看一下:<a href="https://segmentfault.com/a/1190000009329474?_ea=2038402" target="_blank" rel="external">https://segmentfault.com/a/1190000009329474?_ea=2038402</a> (感觉这就是业务与专业的区别哈哈)<br>(PS:其实也有一个做法，就是用nginx来做反向代理，负责转发请求，根据客户端访问的url把这个请求转发到不同的服务，比如访问/api/*的请求，就转发到后台服务，访问其它的请求，就转发到nodejs服务)<br>以上，就是我对于前后端分离的一些看法，以及一些实践，如果大家有什么好的想法，欢迎交流。本次项目代码的地址为:<a href="https://github.com/chenjigeng/filmshopping" target="_blank" rel="external">https://github.com/chenjigeng/filmshopping</a></p>
+        <h3 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h3><p>就我们所知，I/O主要分为，异步I/O和同步I/O,阻塞I/O和非阻塞I/O。其实，准确的说，只有阻塞I/O和非阻塞I/O,异步I/O一般都是通过线程池的方式来模拟这个效果的。那么，阻塞I/O和非阻塞I/O是什么呢？</p>
+<h4 id="阻塞I-O"><a href="#阻塞I-O" class="headerlink" title="阻塞I/O"></a>阻塞I/O</h4><p>阻塞I/O其实就是，当你发起了I/O操作后，你必须要等到I/O操作完成，结果返回之后，你才可以继续执行，这也说明了，在发起I/O请求再到I/O结果返回的这一段CPU时间就浪费了，那么有没有办法可以使用这一段CPU时间呢？答案就是使用非阻塞I/O。具体的可以看下图.<img src="C:\Users\chenjg\Desktop\1500310609(1" alt="1500310609(1)">.jpg)</p>
+<h4 id="非阻塞I-O"><a href="#非阻塞I-O" class="headerlink" title="非阻塞I/O"></a>非阻塞I/O</h4><p>前面我们说过，当发出I/O请求后，我们就必须一直等待I/O结果返回，那么，我们可以发出I/O请求后，就去做其他事情，等过会儿再来看一下吗？答案是可以的。非阻塞I/O就是这样做的，当发出I/O请求后，内核立马返回一个文件描述符，我们可以通过文件描述符在之后去对读取文件的数据以及操作文件。</p>
+<h5 id="非阻塞I-O实现方式"><a href="#非阻塞I-O实现方式" class="headerlink" title="非阻塞I/O实现方式"></a>非阻塞I/O实现方式</h5><p>​    其实基本上所有非阻塞I/O的实现方式都是基于轮询的。轮询是意思是说，我发出请求后，我就先利用CPU去做其他的事情，不过每隔一段时间我就来问你，我的请求是否已经完成了。这样一来的话，确实我们就可以合理的利用这一段限制的CPU时间了。但是，其实对于应用程序来说，这也算是一种同步，因为应用程序需要等待I/O结果完全返回之后，才能做其他事情。依旧花了很多时间在等待，在等待期间内，CPU要么用于遍历文件描述符的状态，要么用于休眠等待事件。</p>
+<p>那么，有没有一种方法，可以真正实现我们所想要的效果呢？也就是发出I/O请求后，可以立刻执行下面的语句，等到I/O操作完成后，在执行相应的回调函数呢？单线程来说的话，可能就很难。不过对于多线程来说就比较简单了。我们可以让一些线程专门用于I/O操作，这里的I/O操作可以是阻塞的，也可以是非阻塞的。而有一个主线程专门来执行语句。也就是说，主线程来执行语句，当遇到I/O操作后，则将I/O操作分配给专门负责I/O操作的线程，然后自己继续执行下面的语句，当I/O操作完成后，则操作线程通过线程间的通信通知主线程，并将结果返回给主线程，主线程在将结果和回调函数混合起来执行。这样，就可以达到我们想要的效果了。</p>
+<p>其实，nodejs的非阻塞I/O就是这么实现的。它有四个基本元素：请求对象，I/O线程池，观察者，事件循环。当你发出一个I/O请求的时候，则会将你的请求的参数、回调函数等，封装在一个请求对象上，然后将其放到I/O线程池中等待执行。当I/O线程池中有线程可用的时候，则将线程分配给请求对象，执行相应的I/O操作，当I/O操作完成后，则将I/O操作的结果放到请求对象中，并通知I/O观察者I/O操作已完成，请求对象会被加入到I/O观察者的请求对象队列中，在每一个事件循环开始，主线程都会观察I/O观察者的队列是否为空，若不为空，则取队首的请求对象，取出请求对象的回调函数和结果，并执行回调函数。</p>
 
       
     </div>
@@ -406,9 +374,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/心得/" rel="tag"># 心得</a>
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
           
-            <a href="/tags/前端/" rel="tag"># 前端</a>
+            <a href="/tags/异步I-O/" rel="tag"># 异步I/O</a>
           
         </div>
       
@@ -421,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/26/百度面试/" rel="next" title="百度前端实习生面试">
-                <i class="fa fa-chevron-left"></i> 百度前端实习生面试
+              <a href="/2017/07/12/let和const详解/" rel="next" title="我对let和const理解">
+                <i class="fa fa-chevron-left"></i> 我对let和const理解
               </a>
             
           </div>
@@ -430,10 +398,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/06/css加载阻塞/" rel="prev" title="css加载会造成阻塞吗？">
-                css加载会造成阻塞吗？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -553,7 +517,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实现前后端分离的心得"><span class="nav-number">1.</span> <span class="nav-text">实现前后端分离的心得</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么选择前后端分离"><span class="nav-number">1.1.</span> <span class="nav-text">为什么选择前后端分离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何做到前后端分离"><span class="nav-number">1.2.</span> <span class="nav-text">如何做到前后端分离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要引入nodejs作为中间层"><span class="nav-number">1.3.</span> <span class="nav-text">为什么要引入nodejs作为中间层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端服务器如何部署"><span class="nav-number">1.4.</span> <span class="nav-text">前端服务器如何部署</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#I-O"><span class="nav-number">1.</span> <span class="nav-text">I/O</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞I-O"><span class="nav-number">1.1.</span> <span class="nav-text">阻塞I/O</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非阻塞I-O"><span class="nav-number">1.2.</span> <span class="nav-text">非阻塞I/O</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#非阻塞I-O实现方式"><span class="nav-number">1.2.1.</span> <span class="nav-text">非阻塞I/O实现方式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

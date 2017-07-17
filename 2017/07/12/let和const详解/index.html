@@ -61,17 +61,17 @@
 
 
 
-<meta name="description" content="​    let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。 let​    let它的出现，我认为主要是解决了块级作用域的需求。因为js以前本身是没有什么块级作用域的概念的(顶多就算上一个函数作用域),因此这也导致了很多变量污染的问题，很多时候由于你没有处理好作用域的影响，导致了奇怪的问题。因此我们一般都采取函数作用域的方式来防止变量的污染。不过既然有了let">
+<meta name="description" content="​let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。 let​let它的出现，我认为主要是解决了块级作用域的需求。因为js以前本身是没有什么块级作用域的概念的(顶多就算上一个函数作用域),因此这也导致了很多变量污染的问题，很多时候由于你没有处理好作用域的影响，导致了奇怪的问题。因此我们一般都采取函数作用域的方式来防止变量的污染。不过既然有了let的出现，我们就可">
 <meta name="keywords" content="es6,let,const">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我对let和const理解">
 <meta property="og:url" content="http://yoursite.com/2017/07/12/let和const详解/index.html">
 <meta property="og:site_name" content="Chenjg&#39;s blog">
-<meta property="og:description" content="​    let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。 let​    let它的出现，我认为主要是解决了块级作用域的需求。因为js以前本身是没有什么块级作用域的概念的(顶多就算上一个函数作用域),因此这也导致了很多变量污染的问题，很多时候由于你没有处理好作用域的影响，导致了奇怪的问题。因此我们一般都采取函数作用域的方式来防止变量的污染。不过既然有了let">
-<meta property="og:updated_time" content="2017-07-12T15:16:14.985Z">
+<meta property="og:description" content="​let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。 let​let它的出现，我认为主要是解决了块级作用域的需求。因为js以前本身是没有什么块级作用域的概念的(顶多就算上一个函数作用域),因此这也导致了很多变量污染的问题，很多时候由于你没有处理好作用域的影响，导致了奇怪的问题。因此我们一般都采取函数作用域的方式来防止变量的污染。不过既然有了let的出现，我们就可">
+<meta property="og:updated_time" content="2017-07-12T15:47:03.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我对let和const理解">
-<meta name="twitter:description" content="​    let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。 let​    let它的出现，我认为主要是解决了块级作用域的需求。因为js以前本身是没有什么块级作用域的概念的(顶多就算上一个函数作用域),因此这也导致了很多变量污染的问题，很多时候由于你没有处理好作用域的影响，导致了奇怪的问题。因此我们一般都采取函数作用域的方式来防止变量的污染。不过既然有了let">
+<meta name="twitter:description" content="​let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。 let​let它的出现，我认为主要是解决了块级作用域的需求。因为js以前本身是没有什么块级作用域的概念的(顶多就算上一个函数作用域),因此这也导致了很多变量污染的问题，很多时候由于你没有处理好作用域的影响，导致了奇怪的问题。因此我们一般都采取函数作用域的方式来防止变量的污染。不过既然有了let的出现，我们就可">
 
 
 
@@ -337,24 +337,25 @@
       
 
       
-        <p>​    let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。</p>
-<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>​    let它的出现，我认为主要是解决了块级作用域的需求。因为js以前本身是没有什么块级作用域的概念的(顶多就算上一个函数作用域),因此这也导致了很多变量污染的问题，很多时候由于你没有处理好作用域的影响，导致了奇怪的问题。因此我们一般都采取函数作用域的方式来防止变量的污染。不过既然有了let的出现，我们就可以很方便的解决这个问题.</p>
+        <p>​let和const是es6新出的两种变量声明的方式，接下来我来分别针对这两个，聊一聊。</p>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>​let它的出现，我认为主要是解决了块级作用域的需求。因为js以前本身是没有什么块级作用域的概念的(顶多就算上一个函数作用域),因此这也导致了很多变量污染的问题，很多时候由于你没有处理好作用域的影响，导致了奇怪的问题。因此我们一般都采取函数作用域的方式来防止变量的污染。不过既然有了let的出现，我们就可以很方便的解决这个问题.</p>
 <ol>
-<li><p>块级作用域</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i)</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(i) <span class="comment">// 5</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++) &#123;</div><div class="line">  <span class="built_in">console</span>.log(j)</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(j) <span class="comment">// error: j is not defined</span></div></pre></td></tr></table></figure>
+<li>块级作用域</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">	<span class="built_in">console</span>.log(i)</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(i) <span class="comment">// 5</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++) &#123;</div><div class="line">	<span class="built_in">console</span>.log(j)</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(j) <span class="comment">// error: j is not defined</span></div></pre></td></tr></table></figure>
 <p>如上所示，如果我们在循环内部使用var声明一个变量的话，当循环结束后，该变量并没有被回收，而当我们使用let的时候，当离开这个块的时候，该变量就会回收。</p>
-</li>
-<li><p>暂时性死区</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">5</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// undefined</span></div><div class="line">  <span class="keyword">var</span> i = <span class="number">10</span></div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="keyword">let</span> j = <span class="number">55</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hhh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(j) <span class="comment">// ReferenceError: j is not defined</span></div><div class="line">  <span class="keyword">let</span> j = <span class="number">77</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<ol>
+<li>暂时性死区</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">5</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// undefined</span></div><div class="line">  <span class="keyword">var</span> i = <span class="number">10</span></div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="keyword">let</span> j = <span class="number">55</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hhh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(j) <span class="comment">// ReferenceError: j is not defined</span></div><div class="line">  <span class="keyword">let</span> j = <span class="number">77</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
 <p>看以上代码，由于var它具有变量提升的功能，所以该声明语句会移到最上面执行，也就是等价于以下代码:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">5</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> i</div><div class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// undefined</span></div><div class="line">  i = <span class="number">10</span></div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="keyword">let</span> j = <span class="number">55</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hhh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(j) <span class="comment">// ReferenceError: j is not defined</span></div><div class="line">  <span class="keyword">let</span> j = <span class="number">77</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">5</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> i</div><div class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// undefined</span></div><div class="line">  i = <span class="number">10</span></div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="keyword">let</span> j = <span class="number">55</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hhh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(j) <span class="comment">// ReferenceError: j is not defined</span></div><div class="line">  <span class="keyword">let</span> j = <span class="number">77</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
 <p>但是，如果将var换成let的话却会报错，如果说，let是没有变量提升的话，那么应该是直接输出55，而不应该报错啊。</p>
 <p>其实，这个特性叫做临时性死区，也可以把它当成变量提升的一种特殊情况.也就是说，当你在一个块里面，利用let声明一个变量的时候，在块的开始部分到该变量的声明语句之间，我们称之为临时性死区，你不可以在这个区域内使用该变量，直到遇到其let语句为止。比如:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">5</span>;   <span class="comment">// j的临时性死区</span></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hh</span>(<span class="params"></span>) </span>&#123; </div><div class="line">  <span class="keyword">var</span> i</div><div class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// undefined</span></div><div class="line">  i = <span class="number">10</span></div><div class="line">&#125;)() <span class="comment">// j的临时性死区</span></div><div class="line"><span class="comment">// j的临时性死区</span></div><div class="line"><span class="keyword">let</span> j = <span class="number">55</span>; <span class="comment">// 接下来可以愉快的使用let了</span></div><div class="line"><span class="built_in">console</span>.log(j)</div><div class="line"><span class="built_in">console</span>.log(j+<span class="number">10</span>)</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hhh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(j) <span class="comment">// 新的j的临时性死区</span></div><div class="line">  <span class="keyword">let</span> j = <span class="number">77</span> <span class="comment">//又有一个声明语句，从这个函数的开始部分到这里，都是新的j的临时性死区</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">5</span>;   <span class="comment">// j的临时性死区</span></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hh</span>(<span class="params"></span>) </span>&#123; </div><div class="line">  <span class="keyword">var</span> i</div><div class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// undefined</span></div><div class="line">  i = <span class="number">10</span></div><div class="line">&#125;)() <span class="comment">// j的临时性死区</span></div><div class="line"><span class="comment">// j的临时性死区</span></div><div class="line"><span class="keyword">let</span> j = <span class="number">55</span>; <span class="comment">// 接下来可以愉快的使用let了</span></div><div class="line"><span class="built_in">console</span>.log(j)</div><div class="line"><span class="built_in">console</span>.log(j+<span class="number">10</span>)</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">hhh</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(j) <span class="comment">// 新的j的临时性死区</span></div><div class="line">  <span class="keyword">let</span> j = <span class="number">77</span> <span class="comment">//又有一个声明语句，从这个函数的开始部分到这里，都是新的j的临时性死区</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
 <p>之所以说它是变量提升的一种特殊情况，是因为无论你在块的哪一个地方利用let声明了一个变量，都会产生一个从块的开始部分到该变量声明语句的临时性死区.</p>
-</li>
-<li><p>比较安全可靠:对var或者是直接声明全局变量来说，变量都可以未声明或者在声明语句之前就使用，而使用了let之后，该变量必须在其声明语句后，才能使用，否则就会报错。这就在一定程度上避免了变量滥用的情况。</p>
-</li>
+<ol>
+<li>比较安全可靠:对var或者是直接声明全局变量来说，变量都可以未声明或者在声明语句之前就使用，而使用了let之后，该变量必须在其声明语句后，才能使用，否则就会报错。这就在一定程度上避免了变量滥用的情况。</li>
 </ol>
 <h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>const，顾名思义，就是声明一个常量，但是，真的是这样吗？</p>
 <h4 id="对基本类型而言"><a href="#对基本类型而言" class="headerlink" title="对基本类型而言"></a>对基本类型而言</h4><p>对于基本的类型而言的话，比如number,string,boolean等来说，确实它就是声明一个不会变的常量，只要你修改了它，就会报错</p>
@@ -417,6 +418,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/18/nodejs异步I-O/" rel="prev" title="nodejs异步I/O">
+                nodejs异步I/O <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -488,7 +493,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -501,7 +506,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
