@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./index.js"></script>
+  <style>
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <label>姓名:</label>
+    <input v-model='name' />
+    <br />
+    <label>年龄</label>
+    <input id='1' v-model='age'/>
+    <br />
+    <span>姓名：{{name}} 年龄：{{ age }} </span>
+    <br />
+    <button id="btn">修改姓名</button>
+    <br />
+  </div>
+  <script>
+    const mvvm = new MVVM({
+      el: "#app",
+      data: {
+        name: 'cjg',
+        age: '22',
+      },
+    });
+    const button = document.getElementById('btn');
+    button.onclick = () => {
+      mvvm.name = 'zht';
+    }
+  </script>
+</body>
+</html>
