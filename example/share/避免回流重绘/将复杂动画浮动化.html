@@ -38,7 +38,14 @@
   </style>
 </head>
 <body>
+  <script>
+    function update() {
+      const box = document.getElementById('box');
+      box.style.position = 'absolute';
+    }
+  </script>
   <div id="box">我是个动画</div>
+  <button onclick="update()">求求你别挤我了</button>
   <p>test</p>
   <p>test</p>
   <p>test</p>
