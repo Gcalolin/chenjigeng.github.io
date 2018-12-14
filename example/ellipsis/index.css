@@ -1,0 +1,19 @@
+.wrap {
+	height: 200px;
+}
+
+.text {
+	height: 40px;
+	line-height: 20px;
+	float: right;
+	overflow: hidden;
+}
+
+.ellipsis {
+	float: right;
+	position: relative;
+	top: -20px;
+	line-height: 20px;
+	z-index: 100;
+	background: white;
+}
